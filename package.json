@@ -2,7 +2,7 @@
   "name": "prog3-aval2",
   "version": "1.0.0",
   "description": "segunda prova de programação 3",
-  "main": "index.html",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
