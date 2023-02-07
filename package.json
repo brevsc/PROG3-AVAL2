@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/brevsc/PROG3-AVAL2#readme",
   "dependencies": {
+    "express": "^4.18.2",
     "sqlite3": "^5.1.4"
   }
 }
