@@ -13,7 +13,8 @@ a {
 }
 
 a:hover {
-  color: rgb(27, 27, 27);
+  /* color: rgb(27, 27, 27); */
+  color: var(--terciary-color);
 }
 
 #logo {
