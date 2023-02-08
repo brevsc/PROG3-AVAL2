@@ -1,3 +1,7 @@
+@import "index.css";
 :root{
-  --primary-color: #ffffff;
+  --primary-color:#036aa5;
+  --secundary-color: #f5f5f5;
+  --elect: #15a502;
+  --not-elect: #e20707;
 }
