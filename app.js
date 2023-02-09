@@ -6,6 +6,14 @@ const app = express()
 // Express servindo o front-end
 app.use(express.static('./client'))
 
+// Setando header nas respostas do endpoint
+app.use((request, response, next) => {
+  response.header('Access-Control-Allow-Origin', '*');
+  response.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  response.header('Access-Control-Max-Age', 3600);
+  next();
+});
+
 // Express servindo a API
 app.get('/candidato', (request, response) => {
   sqlite.database.all("SELECT * FROM candidato", [], (err, rows) => {
