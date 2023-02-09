@@ -20,6 +20,12 @@ a:hover {
 #logo {
   font-size: 1.5rem;
   font-weight: bold;
+  transition: all .2s ease-in-out;
+}
+
+#logo:hover{
+  color: #ffffff;
+  transform: scale(0.98);
 }
 
 #header {
@@ -44,6 +50,11 @@ a:hover {
 #menu a {
   display: block;
   padding: 0.5rem;
+  transition: all .2s ease-in-out;
+}
+
+#menu a:hover{
+  transform:translateY(0.5px);
 }
 
 #btn-mobile {
