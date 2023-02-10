@@ -61,7 +61,7 @@ a:hover {
   display: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   #menu {
     display: block;
     position: absolute;
