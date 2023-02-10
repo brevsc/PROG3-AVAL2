@@ -3,6 +3,8 @@ const sqlite = require('./server/database')
 
 const app = express()
 
+let elect;
+
 // Express servindo o front-end
 app.use(express.static('./client'))
 app.use(express.json())
@@ -23,12 +25,21 @@ app.post('/candidato', (request, response) => {
 
   sqlite.database.all(sql, [], (err, rows) => {
     if (err) { throw err; }
+
+    
     let result = rows.map((row) => {
+      if(row.cand_status === 0){
+        elect = 'não eleito'
+      } else if(row.cand_status === 1){
+        elect = 'eleito'
+      } else if(row.cand_status === 2){
+        elect = 'indeferido'
+      };
       return {
         nome: row.cand_nome,
         cargo: row.cargo_nome,
         votacao: row.cand_votos,
-        status: row.cand_status
+        status: elect
       }
     })
     const json = JSON.stringify(result)
@@ -43,11 +54,18 @@ app.post('/cargo', (request, response) => {
     if (err) { throw err; }
 
     let result = rows.map((row) => {
+      if(row.cand_status === 0){
+        elect = 'não eleito'
+      } else if(row.cand_status === 1){
+        elect = 'eleito'
+      } else if(row.cand_status === 2){
+        elect = 'indeferido'
+      };
       return {
         nome: row.cand_nome, 
         cargo: row.cargo_nome,
         votacao: row.cand_votos,
-        status: row.cand_status
+        status: elect
       }
     })
 
@@ -63,11 +81,18 @@ app.post('/municipio', (request, response) => {
     if (err) { throw err; }
 
     let result = rows.map((row) => {
+      if(row.cargo_nome === 0){
+        elect = 'não eleito'
+      } else if(row.cargo_nome === 1){
+        elect = 'eleito'
+      } else if(row.cargo_nome === 2){
+        elect = 'indeferido'
+      };
       return {
         nome: row.cand_nome, 
         cargo: row.cand_status,
         votacao: row.cand_votos,
-        status: row.cargo_nome
+        status: elect
       }
     })
 
@@ -80,6 +105,13 @@ app.post('/resultadogeral', (request, response) => {
   sqlite.database.all(`SELECT can.nome AS cand_nome, carg.nome AS cargo_nome, can.status AS status FROM candidato can, cargo carg WHERE can.cargo = carg.id ${request.body.only_elected ? 'AND can.status = 1' : ''};`, [], (err, rows) => {
     if (err) { throw err; }
     let result = rows.map((row) => {
+      if(row.cand_status === 0){
+        elect = 'não eleito'
+      } else if(row.cand_status === 1){
+        elect = 'eleito'
+      } else if(row.cand_status === 2){
+        elect = 'indeferido'
+      };
       return {
         nome: row.cand_nome,
         cargo: row.cargo_nome,
