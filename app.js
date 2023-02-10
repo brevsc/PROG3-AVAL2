@@ -50,7 +50,7 @@ app.post('/candidato', (request, response) => {
 app.post('/cargo', (request, response) => {
   const role = request.body.role
 
-  sqlite.database.all(`SELECT cand_nome, cargo_nome, cand_votos, cand_status FROM votos_cand_estado WHERE cargo_nome LIKE '${role}%';`, [], (err, rows) => {
+  sqlite.database.all(`SELECT cand_nome, cargo_nome, cand_votos, cand_status FROM votos_cand_estado WHERE cargo_nome LIKE '${role}';`, [], (err, rows) => {
     if (err) { throw err; }
 
     let result = rows.map((row) => {

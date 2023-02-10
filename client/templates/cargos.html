@@ -31,7 +31,14 @@
         <div class="top">
             <h1>Faça uma pesquisa por cargo</h1>
             <div class="search">
-                <input type="text">
+                <select name="select">
+                    <option value="" selected>Selecione o cargo aqui</option>
+                    <option value="Deputado Federal">Deputado Federal</option>
+                    <option value="Presidente">Presidente</option>
+                    <option value="Governador">Governador</option>
+                    <option value="Senador">Senador</option>
+                    <option value="Deputado Estadual">Deputado Estadual</option>
+                </select>
             </div>
         </div>
             <!--Ao se selecionar o cargo desejado a partir de uma lista, deve-se apresentar uma relação de todos os candidatos contendo (i) nome, (ii) quantidade de votos recebidos e (iii) status (eleito ou não eleito).

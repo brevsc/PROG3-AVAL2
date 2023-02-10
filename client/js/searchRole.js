@@ -1,25 +1,21 @@
-const input = document.querySelector('.search input')
+const select = document.querySelector('.search select')
 const cards = document.querySelector('.cards')
 
-input.addEventListener('input', async () => {
-  let search = { role: input.value }
-  let data = await postRole(search)
+select.addEventListener('input', async () => {
+  let search = { role: select.value }
 
+  let data = await postRole(search)
   cards.innerHTML = ''
 
   data.map((elem) => {
-    cards.insertAdjacentHTML('afterbegin', 
-    `<div class="card">
-      <h3>${elem.nome}</h3>
-      <p>cargo: ${elem.cargo}</p>
-      <p>votos: ${elem.votacao}</p>
-      <p>status: ${elem.status}</p>
-    </div>`);
+    cards.insertAdjacentHTML('afterbegin',
+      `<div class="card">
+    <h3>${elem.nome}</h3>
+    <p>cargo: ${elem.cargo}</p>
+    <p>votos: ${elem.votacao}</p>
+    <p>status: ${elem.status}</p>
+  </div>`);
   })
-
-  if (input.value == '') { 
-    cards.innerHTML = '' 
-}
 })
 
 async function postRole(search) {
@@ -30,11 +26,11 @@ async function postRole(search) {
     },
     body: JSON.stringify(search)
   })
-  .then((response) => response.json())
-  .then((data) => {
-    return data;
-  })
-  .catch((error) => {
-    console.error('Error:', error);
-  });
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
 }
