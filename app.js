@@ -3,6 +3,8 @@ const sqlite = require('./server/database')
 
 const app = express()
 
+let elect;
+
 // Express servindo o front-end
 app.use(express.static('./client'))
 app.use(express.json())
@@ -23,12 +25,21 @@ app.post('/candidato', (request, response) => {
 
   sqlite.database.all(sql, [], (err, rows) => {
     if (err) { throw err; }
+
+    
     let result = rows.map((row) => {
+      if(row.cand_status === 0){
+        elect = 'não eleito'
+      } else if(row.cand_status === 1){
+        elect = 'eleito'
+      } else if(row.cand_status === 2){
+        elect = 'indeferido'
+      };
       return {
         nome: row.cand_nome,
         cargo: row.cargo_nome,
         votacao: row.cand_votos,
-        status: row.cand_status
+        status: elect
       }
     })
     const json = JSON.stringify(result)
@@ -43,11 +54,18 @@ app.post('/cargo', (request, response) => {
     if (err) { throw err; }
 
     let result = rows.map((row) => {
+      if(row.cand_status === 0){
+        elect = 'não eleito'
+      } else if(row.cand_status === 1){
+        elect = 'eleito'
+      } else if(row.cand_status === 2){
+        elect = 'indeferido'
+      };
       return {
         nome: row.cand_nome, 
         cargo: row.cargo_nome,
         votacao: row.cand_votos,
-        status: row.cand_status
+        status: elect
       }
     })
 
@@ -63,9 +81,16 @@ app.post('/municipio', (request, response) => {
     if (err) { throw err; }
 
     let result = rows.map((row) => {
+      if(row.cand_status === 0){
+        elect = 'não eleito'
+      } else if(row.cand_status === 1){
+        elect = 'eleito'
+      } else if(row.cand_status === 2){
+        elect = 'indeferido'
+      };
       return {
         nome: row.cand_nome, 
-        cargo: row.cand_status,
+        cargo: elect,
         votacao: row.cand_votos,
         status: row.cargo_nome
       }
@@ -80,6 +105,13 @@ app.get('/resultadogeral', (request, response) => {
   sqlite.database.all("SELECT * FROM votacao", [], (err, rows) => {
     if (err) { throw err; }
     let result = rows.map((row) => {
+      if(row.cand_status === 0){
+        elect = 'não eleito'
+      } else if(row.cand_status === 1){
+        elect = 'eleito'
+      } else if(row.cand_status === 2){
+        elect = 'indeferido'
+      };
       return {
         municipio: row.municipio, 
         zona: row.zona,
