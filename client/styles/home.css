@@ -63,6 +63,7 @@ h1{
   padding: 8px 16px;
   transition: border .3s, color .3s;
   width: 132px;
+  margin-left: 15px;
 }
 
 .button-wrapper a:hover {
@@ -139,15 +140,37 @@ h1{
   place-items: center;
 }
 
+select{
+  width: 100%;
+  min-width: 15ch;
+  max-width: 30ch;
+  border: 2px solid var(--quaternary-color);
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  font-size: 1.25rem;
+  cursor: pointer;
+  line-height: 1.1;
+  background-color: #fff;
+  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+  outline: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+select:hover{
+  border: 2px solid var(--primary-color);
+}
 
 @media (min-width:600px) {
   .button-wrapper {
-    align-items: center;
-    justify-content: center;
     display: grid;
+    place-content: center;
     gap: 16px;
-    grid-template-columns: repeat(auto-fill, minmax(192px, 1fr));
+    grid-template-columns: repeat(minmax(192px, 1fr));
     padding: 0 32px;
+    text-align: center;
     width: calc(100% - 64px);
   }
 
@@ -155,6 +178,7 @@ h1{
     width: 160px;
   }
 }
+
 
 @media (min-width:800px) {
   .top > h1 {
