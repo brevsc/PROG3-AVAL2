@@ -15,4 +15,4 @@ GRUPO: BRENO VASCONCELOS, DYMAS SOUSA, HERON NEPOMUCENO
 
 > Candidate Tracker
 
-O projeto foi feito no intuito de criar uma página de pesquisa de resultados das eleições no estado do Piauí. Nele pode ser feita uma pesquisa por nome de candidato, cargo, municipio e visualizar o resultado geral da votação no Estado para todos os cargos eletivos.
+O projeto foi feito no intuito de criar uma página de pesquisa de resultados das eleições no estado do Piauí. Nele pode ser feita uma pesquisa por nome de candidato, cargo, município e visualizar o resultado geral da votação no estado para todos os cargos eletivos.
