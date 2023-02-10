@@ -81,18 +81,18 @@ app.post('/municipio', (request, response) => {
     if (err) { throw err; }
 
     let result = rows.map((row) => {
-      if(row.cand_status === 0){
+      if(row.cargo_nome === 0){
         elect = 'não eleito'
-      } else if(row.cand_status === 1){
+      } else if(row.cargo_nome === 1){
         elect = 'eleito'
-      } else if(row.cand_status === 2){
+      } else if(row.cargo_nome === 2){
         elect = 'indeferido'
       };
       return {
         nome: row.cand_nome, 
-        cargo: elect,
+        cargo: row.cand_status,
         votacao: row.cand_votos,
-        status: row.cargo_nome
+        status: elect
       }
     })
 
