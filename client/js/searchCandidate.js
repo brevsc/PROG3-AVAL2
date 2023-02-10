@@ -12,7 +12,7 @@ input.addEventListener('input', async () => {
     cards.insertAdjacentHTML('afterbegin', 
     `<div class="card">
       <h3>${elem.nome}</h3>
-      <p>partido: ${elem.cargo}</p>
+      <p>cargo: ${elem.cargo}</p>
       <p>votos: ${elem.votacao}</p>
     </div>`);
   })
