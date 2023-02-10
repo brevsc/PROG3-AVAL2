@@ -5,6 +5,7 @@ const app = express()
 
 // Express servindo o front-end
 app.use(express.static('./client'))
+app.use(express.json())
 
 // Setando header nas respostas do endpoint
 app.use((request, response, next) => {
@@ -15,20 +16,22 @@ app.use((request, response, next) => {
 });
 
 // Express servindo a API
-app.get('/candidato', (request, response) => {
-  sqlite.database.all("SELECT * FROM candidato", [], (err, rows) => {
+app.post('/candidato', (request, response) => {
+  let search = request.body.name
+
+  const sql = `SELECT cand_nome, cand_status, cand_votos, cargo_nome FROM votos_cand_estado WHERE cand_nome LIKE '${search.toUpperCase()}%'`
+
+  sqlite.database.all(sql, [], (err, rows) => {
     if (err) { throw err; }
     let result = rows.map((row) => {
       return {
-        id: row.id, 
-        nome: row.nome,
-        cargo: row.cargo,
-        tipo: row.tipo,
-        status: row.status
+        nome: row.cand_nome,
+        cargo: row.cargo_nome,
+        votacao: row.cand_votos,
+        status: row.cand_status
       }
     })
     const json = JSON.stringify(result)
-
     response.send(json)
   });
 })
