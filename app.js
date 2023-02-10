@@ -36,33 +36,42 @@ app.post('/candidato', (request, response) => {
   });
 })
 
-app.get('/cargo', (request, response) => {
-  sqlite.database.all("SELECT * FROM cargo", [], (err, rows) => {
+app.post('/cargo', (request, response) => {
+  const role = request.body.role
+
+  sqlite.database.all(`SELECT cand_nome, cargo_nome, cand_votos, cand_status FROM votos_cand_estado WHERE cargo_nome LIKE '${role}%';`, [], (err, rows) => {
     if (err) { throw err; }
+
     let result = rows.map((row) => {
       return {
-        id: row.id, 
-        nome: row.nome
+        nome: row.cand_nome, 
+        cargo: row.cargo_nome,
+        votacao: row.cand_votos,
+        status: row.cand_status
       }
     })
-    const json = JSON.stringify(result)
 
+    const json = JSON.stringify(result)
     response.send(json)
   });
 })
 
-app.get('/municipio', (request, response) => {
-  sqlite.database.all("SELECT * FROM municipio", [], (err, rows) => {
+app.post('/municipio', (request, response) => {
+  const city = request.body.city
+
+  sqlite.database.all(`SELECT cand_nome, cargo_nome, cand_votos, cand_status FROM votos_cand_municipio WHERE muni_nome LIKE '${city.toUpperCase()}%';`, [], (err, rows) => {
     if (err) { throw err; }
+
     let result = rows.map((row) => {
       return {
-        id: row.id, 
-        nome: row.nome,
-        uespi: row.uespi
+        nome: row.cand_nome, 
+        cargo: row.cargo_nome,
+        votacao: row.cand_votos,
+        status: row.cand_status
       }
     })
-    const json = JSON.stringify(result)
 
+    const json = JSON.stringify(result)
     response.send(json)
   });
 })
