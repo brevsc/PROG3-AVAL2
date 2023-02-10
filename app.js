@@ -76,19 +76,14 @@ app.post('/municipio', (request, response) => {
   });
 })
 
-app.get('/resultadogeral', (request, response) => {
-  sqlite.database.all("SELECT * FROM votacao", [], (err, rows) => {
+app.post('/resultadogeral', (request, response) => {
+  sqlite.database.all(`SELECT can.nome AS cand_nome, carg.nome AS cargo_nome, can.status AS status FROM candidato can, cargo carg WHERE can.cargo = carg.id ${request.body.only_elected ? 'AND can.status = 1' : ''};`, [], (err, rows) => {
     if (err) { throw err; }
     let result = rows.map((row) => {
       return {
-        municipio: row.municipio, 
-        zona: row.zona,
-        secao: row.secao,
-        urna: row.urna,
-        candidato: row.candidato,
-        tipo: row.tipo,
-        cargo: row.cargo,
-        votos: row.votos
+        nome: row.cand_nome,
+        cargo: row.cargo_nome,
+        status: row.status
       }
     })
     const json = JSON.stringify(result)
