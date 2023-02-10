@@ -126,6 +126,20 @@ app.post('/resultadogeral', (request, response) => {
   });
 })
 
+app.get('/listadecidades', (request, response) => {
+  sqlite.database.all("SELECT nome FROM municipio;", [], (err, rows) => {
+    if (err) { throw err; }
+    let result = rows.map((row) => {
+      return {
+        cidade: row.nome
+      }
+    })
+    const json = JSON.stringify(result)
+
+    response.send(json)
+  })
+})
+
 app.listen(3000, () => {
   console.log('Servidor funcionando em http://localhost:3000/')
 })
