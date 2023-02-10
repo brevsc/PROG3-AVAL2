@@ -14,6 +14,7 @@ input.addEventListener('input', async () => {
       <h3>${elem.nome}</h3>
       <p>cargo: ${elem.cargo}</p>
       <p>votos: ${elem.votacao}</p>
+      <p>status: ${elem.status}</p>
     </div>`);
   })
 

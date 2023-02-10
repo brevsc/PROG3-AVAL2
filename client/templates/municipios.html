@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Candidato</title>
+    <title>Município</title>
     <link rel="stylesheet" href="../styles/index.css">
 </head>
 
@@ -19,27 +19,34 @@
             </button>
             <ul id="menu" role="menu">
                 <li><a href="../index.html">Início</a></li>
-                <li><a href=".">Candidato</a></li>
-                <li><a href="./searchCargo.html">Cargo</a></li>
-                <li><a href="./searchMunicipio.html">Município</a></li>
+                <li><a href="./candidatos.html">Candidato</a></li>
+                <li><a href="./cargos.html">Cargo</a></li>
+                <li><a href=".">Município</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
         <div class="top">
-            <h1>Faça uma pesquisa por candidato</h1>
+            <h1>Faça uma pesquisa por município</h1>
             <div class="search">
                 <input type="text">
             </div>
         </div>
-
+            <!--Ao se selecionar o município, deve ser exibida a votação de todos os candidatos que receberam votação naquele município.
+            No resultado apresentado deve constar nome, cargo, votação e status (eleito ou não eleito).
+            Ao final do resultado deve ser exibida a totalização dos votos.-->
         <div class="cards">
-            <!-- CARDS RENDER HERE !! -->
+            <div class="card">
+                <h3>nome: </h3>
+                <p>cargo: </p>
+                <p>votos: </p>
+                <p>status: </p>
+            </div>
+
         </div>
     </main>
-    <script src="../js/menu.js"></script>
-    <script src="../js/searchCandidate.js"></script>
+    <script src="../components/menu.js"></script>
 </body>
 
 </html>

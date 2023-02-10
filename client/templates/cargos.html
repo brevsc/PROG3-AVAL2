@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargo</title>
+    <link rel="stylesheet" href="../styles/index.css">
+</head>
+
+<body>
+
+    <header id="header">
+        <a id="logo" href="../index.html">Candidate Tracker</a>
+        <nav id="nav">
+            <button aria-label="Abrir Menu" id="btn-mobile" aria-haspopup="true" aria-controls="menu" aria-expanded="false">
+                <span id="hamburger"></span>
+            </button>
+            <ul id="menu" role="menu">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="./candidatos.html">Candidato</a></li>
+                <li><a href=".">Cargo</a></li>
+                <li><a href="./municipios.html">Município</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="top">
+            <h1>Faça uma pesquisa por cargo</h1>
+            <div class="search">
+                <input type="text">
+            </div>
+        </div>
+            <!--Ao se selecionar o cargo desejado a partir de uma lista, deve-se apresentar uma relação de todos os candidatos contendo (i) nome, (ii) quantidade de votos recebidos e (iii) status (eleito ou não eleito).
+            No resultado apresentado deve constar nome, cargo, votação e status (eleito ou não eleito).-->
+        <div class="cards">
+            <div class="card">
+                <h3>nome: </h3>
+                <p>cargo: </p>
+                <p>votos: </p>
+                <p>status: </p>
+            </div>
+        </div>
+    </main>
+    <script src="../components/menu.js"></script>
+</body>
+
+</html>
