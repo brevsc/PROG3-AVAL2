@@ -22,7 +22,7 @@
                 <li><a href="./templates/candidatos.html">Candidato</a></li>
                 <li><a href="./templates/cargos.html">Cargo</a></li>
                 <li><a href="./templates/municipios.html">Município</a></li>
-                <li><a href="./templates/resultadogeral.html">Estado</a></li>
+                <li><a href="./templates/resultadogeral.html">Resultado geral</a></li>
             </ul>
         </nav>
     </header>
@@ -30,13 +30,14 @@
     <main>
         <div class="top">
             <h1>Bem Vindo</h1>
-            <p>aqui você pode realizar uma pesquisa dos resultados das eleições no estado do Piauí</p>
-            <p>selecione o tipo de busca que deseja:</p>
+            <p>Aqui você pode realizar uma pesquisa dos resultados das eleições no estado do Piauí. <br>Selecione o tipo de busca que deseja:</p>
         </div>
 
-        <!-- Exibir o resultado geral da votação no Estado para todos os cargos eletivos.
-            Deve ser possível apresentar a votação global de todos os candidatos ou apenas dos candidatos eleitos.
-            A alternância entre “eleitos” e “não eleitos” deve ser implementada utilizando-se a técnica AJAX. -->
+        <div class="button-wrapper">
+            <a href="./templates/candidatos.html">Por candidatos</a>
+            <a href="./templates/cargos.html">Por cargo</a>
+            <a href="./templates/municipios.html">Por município</a>
+            <a href="./templates/resultadogeral.html">Resultado geral</a>
         </div>
     </main>
     <script src="./js/menu.js"></script>

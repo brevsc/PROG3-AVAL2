@@ -1,0 +1,22 @@
+@import "./variables.css";
+
+.search {
+  align-items: center;
+  display: flex;
+  padding: 0 32px;
+  justify-content: center;
+  width: calc(100% - 64px);
+}
+
+.search input[type=text] {
+  color: var(--quaternary-color);
+  font-family: var(--font-primary);
+  font-weight: 500;
+  font-size: 16px;
+  width: 300px;
+  height: 32px;
+  padding: 8px;
+  background: var(--background);
+  border: 2px solid var(--primary-color);
+  border-radius: 10px;
+}

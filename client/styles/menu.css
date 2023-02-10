@@ -9,7 +9,8 @@ ul {
 a {
   color: var(--secundary-color);
   text-decoration: none;
-  font-family: sans-serif;
+  font-family: var(--font-primary);
+  font-weight: 500;
 }
 
 a:hover {
@@ -19,13 +20,12 @@ a:hover {
 
 #logo {
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 700;
   transition: all .2s ease-in-out;
 }
 
 #logo:hover{
   color: #ffffff;
-  transform: scale(0.98);
 }
 
 #header {
