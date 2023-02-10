@@ -15,7 +15,6 @@ const cards = document.querySelector('.cards');
             `<div class="card">
                 <h3>${elem.nome}</h3>
                 <p>cargo: ${elem.cargo}</p>
-                <p>votos: ${elem.votacao}</p>
                 <p>status: ${elem.status}</p>
             </div>`);
     })
@@ -31,7 +30,6 @@ input.addEventListener('change', async () => {
     `<div class="card">
       <h3>${elem.nome}</h3>
       <p>cargo: ${elem.cargo}</p>
-      <p>votos: ${elem.votacao}</p>
       <p>status: ${elem.status}</p>
     </div>`);
   })

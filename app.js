@@ -105,17 +105,19 @@ app.post('/resultadogeral', (request, response) => {
   sqlite.database.all(`SELECT can.nome AS cand_nome, carg.nome AS cargo_nome, can.status AS status FROM candidato can, cargo carg WHERE can.cargo = carg.id ${request.body.only_elected ? 'AND can.status = 1' : ''};`, [], (err, rows) => {
     if (err) { throw err; }
     let result = rows.map((row) => {
-      if(row.cand_status === 0){
+      
+      if(row.status === 0){
         elect = 'não eleito'
-      } else if(row.cand_status === 1){
+      } else if(row.status === 1){
         elect = 'eleito'
-      } else if(row.cand_status === 2){
+      } else if(row.status === 2){
         elect = 'indeferido'
       };
+
       return {
         nome: row.cand_nome,
         cargo: row.cargo_nome,
-        status: row.status
+        status: elect
       }
     })
     const json = JSON.stringify(result)
