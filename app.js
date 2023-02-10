@@ -59,15 +59,15 @@ app.post('/cargo', (request, response) => {
 app.post('/municipio', (request, response) => {
   const city = request.body.city
 
-  sqlite.database.all(`SELECT cand_nome, cargo_nome, cand_votos, cand_status FROM votos_cand_municipio WHERE muni_nome LIKE '${city.toUpperCase()}%';`, [], (err, rows) => {
+  sqlite.database.all(`SELECT cand_nome, cargo_nome, cand_status, cand_votos FROM votos_cand_municipio WHERE muni_nome LIKE '${city.toUpperCase()}%';`, [], (err, rows) => {
     if (err) { throw err; }
 
     let result = rows.map((row) => {
       return {
         nome: row.cand_nome, 
-        cargo: row.cargo_nome,
+        cargo: row.cand_status,
         votacao: row.cand_votos,
-        status: row.cand_status
+        status: row.cargo_nome
       }
     })
 
